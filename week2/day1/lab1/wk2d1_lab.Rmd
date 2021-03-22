@@ -1,0 +1,73 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+
+```{r}
+actors <- read_csv("data/actors.csv") %>% clean_names()
+movies <- read_csv("data/movies.csv") %>% clean_names()
+roles <- read_csv("data/roles.csv") %>% clean_names()
+```
+
+```{r}
+view(actors)
+view(movies)
+view(roles)
+```
+
+
+1
+List all the roles, along with the actors who played each role in The Little Mermaid. (In the data as “Little Mermaid, The”)
+
+
+```{r}
+roles_movies <- inner_join(roles, movies, by = c("movie_id" = "id"))
+
+roles_movies_actors <- inner_join(roles_movies, actors, by = c("actor_id" = "id"))
+
+
+roles_movies_actors %>% 
+  filter(name == "Little Mermaid, The") %>% 
+  select(first_name, last_name, role)
+
+```
+
+
+
+2
+Find the actor who has appeared in most films. List the films they appeared in, the year the film was released and their role in the film.
+
+```{r}
+roles_movies_actors %>% 
+  arrange(desc(film_count)) %>%
+  head(1) %>% 
+  select(first_name, last_name, film_count, actor_id)
+
+roles_movies_actors %>% 
+  filter(actor_id == "22591") %>% 
+  select(name, year, role)
+
+```
+
+
+3
+For all actors who have appeared in at least two films, find the average rating of the films they appeared. Find the five actors with the highest average rank of films they appeared in.
+
+```{r}
+roles_movies_actors %>%
+  filter(film_count >= 2) %>%
+  mutate(rank = as.numeric(rank)) %>% 
+  group_by(first_name, last_name) %>% 
+  summarise(
+    average_rank = mean(rank)
+  ) %>% 
+  arrange(desc(average_rank)) %>%
+  head(5)
+  
+```
+
