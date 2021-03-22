@@ -149,3 +149,12 @@ mutate(difference_from_avg = round(points - average_rating)) %>%
 wine_subset
 ```
 
+```{r}
+#another easier way to do this!
+wine_subset %>% 
+group_by(taster_name) %>% 
+  mutate(avg_rating = mean(points)) %>% 
+  mutate(difference_from_avg = points - avg_rating) %>% 
+  arrange(desc(difference_from_avg))
+```
+
