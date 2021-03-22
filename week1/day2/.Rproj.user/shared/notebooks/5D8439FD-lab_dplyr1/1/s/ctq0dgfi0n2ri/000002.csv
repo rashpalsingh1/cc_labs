@@ -1,0 +1,3 @@
+"0",""
+"0","states_A_B_C <- income %>% "
+"0","  filter(first_letter %in% ""A"" | first_letter %in% ""B"" |  first_letter %in% ""C"")"

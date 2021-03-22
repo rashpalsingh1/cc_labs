@@ -1,0 +1,2 @@
+"0","states_A_B_C_inc %>% "
+"0","  summarise(mean = mean(income_change), median = median(income_change) ) #%>% "

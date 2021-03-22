@@ -1,0 +1,2 @@
+"0","income <- income %>% "
+"0","  rename(first_letter = index)"

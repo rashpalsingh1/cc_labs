@@ -1,0 +1,2 @@
+"0","states_A_B_C_inc <- states_A_B_C %>% "
+"0","  mutate(income_change = y2008 - y2002)"

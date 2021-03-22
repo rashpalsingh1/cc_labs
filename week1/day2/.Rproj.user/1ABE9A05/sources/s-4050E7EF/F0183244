@@ -1,0 +1,28 @@
+{
+    "id": "F0183244",
+    "path": "~/labs/week1/day2/lab_dplyr1.Rmd",
+    "project_path": "lab_dplyr1.Rmd",
+    "type": "r_markdown",
+    "hash": "2198363114",
+    "contents": "",
+    "dirty": false,
+    "created": 1616342978343.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "85,29",
+        "scrollLine": "76"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1616410112,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1616410112547,
+    "read_only": false,
+    "read_only_alternatives": []
+}
