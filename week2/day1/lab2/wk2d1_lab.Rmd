@@ -1,0 +1,64 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+
+
+1
+Load in the country_data.csv file and take a look at it. What needs changed in this to make it tidy? Which columns need made into long format, and which need spread to rows?
+
+```{r}
+country <- read_csv("data/country_data.csv") %>% clean_names()
+```
+```{r}
+view(country)
+```
+
+
+2
+Do the appropriate pivoting of your columns using R.
+
+
+```{r}
+#create one year column, store values in temp column called values
+country_longer <- country %>%
+ pivot_longer(cols = starts_with("y"), 
+               names_to = "year", 
+               values_to = "values")
+
+view(country_longer)
+
+country_longer_wider <- country_longer %>%
+pivot_wider(names_from = type, 
+              values_from = values)
+
+#view(country_longer_wider)
+```
+
+
+3
+Separate the country variable so you have the name in one column and the number in another.
+
+```{r}
+country_split <- country_longer_wider %>% 
+  separate(country, c("number", "name"), sep = "\\." )
+
+#view(country_split)
+```
+
+
+4
+Unite the code_letter and code_numb variables so that they are both in one column, with no spaces separating them.
+
+```{r}
+country_final <- country_split %>% 
+  unite(code, c("code_letter", "code_numb"), sep ="")
+
+#view(country_final)
+```
+
